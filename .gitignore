@@ -80,3 +80,5 @@ sketch
 
 coverage/
 
+# Dist folder
+dist/
