@@ -85,7 +85,7 @@ function Weather({ city }) {
     .toFormat("HH:mm");
 
   return (
-    <div className="bg-white/15 backdrop-blur-md rounded-2xl p-6 border border-white/20 shadow-2xl">
+    <div className="bg-white/15 backdrop-blur-md rounded-2xl p-6 border border-white/20 shadow-2xl hover:bg-white/10 transition-all">
       {/* Header */}
       <div className="flex items-center justify-center gap-3 mb-6">
         <h2 className="text-xl font-semibold text-white">
@@ -96,7 +96,7 @@ function Weather({ city }) {
           <img
             src={`https://flagsapi.com/${country}/flat/32.png`}
             alt={country}
-            className="h-6 w-8 rounded shadow-md"
+            className="h-8 w-8 rounded"
           />
         )}
       </div>
@@ -118,31 +118,39 @@ function Weather({ city }) {
             {camelCase(weather.weather?.[0]?.description)}
           </div>
           <div className="text-white/60 text-sm mt-1">
-            Local time: {localTime}
+            Last Updated: {localTime} (Local Time)
           </div>
         </div>
       </div>
 
       {/* Weather Details */}
       <div className="grid grid-cols-3 gap-4">
-        <div className="bg-white/10 rounded-xl p-3 text-center backdrop-blur-sm">
-          <DateIcon className="h-6 w-6 text-white/80 mx-auto mb-1" />
-          <div className="text-white/90 text-sm font-medium">
-            {new Date(weather.dt * 1000).toLocaleDateString()}
+        <div class="tooltip" data-tip="Local Date">
+          <div className="bg-white/10 rounded-xl p-3 text-center backdrop-blur-sm">
+            <DateIcon className="h-6 w-6 text-white/80 mx-auto mb-1" />
+            <div className="text-white/90 text-sm font-medium">
+              {DateTime.utc()
+                .plus({ seconds: weather.timezone })
+                .toFormat("MM/dd/yyyy")}
+            </div>
           </div>
         </div>
 
-        <div className="bg-white/10 rounded-xl p-3 text-center backdrop-blur-sm">
-          <HumidityIcon className="h-6 w-6 text-white/80 mx-auto mb-1" />
-          <div className="text-white/90 text-sm font-medium">
-            {weather.main?.humidity}%
+        <div class="tooltip" data-tip="Humidity">
+          <div className="bg-white/10 rounded-xl p-3 text-center backdrop-blur-sm">
+            <HumidityIcon className="h-6 w-6 text-white/80 mx-auto mb-1" />
+            <div className="text-white/90 text-sm font-medium">
+              {weather.main?.humidity}%
+            </div>
           </div>
         </div>
 
-        <div className="bg-white/10 rounded-xl p-3 text-center backdrop-blur-sm">
-          <WindIcon className="h-6 w-6 text-white/80 mx-auto mb-1" />
-          <div className="text-white/90 text-sm font-medium">
-            {weather.wind?.speed} m/s
+        <div class="tooltip" data-tip="Wind Speed">
+          <div className="bg-white/10 rounded-xl p-3 text-center backdrop-blur-sm">
+            <WindIcon className="h-6 w-6 text-white/80 mx-auto mb-1" />
+            <div className="text-white/90 text-sm font-medium">
+              {weather.wind?.speed} m/s
+            </div>
           </div>
         </div>
       </div>

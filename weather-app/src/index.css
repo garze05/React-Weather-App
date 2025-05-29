@@ -1,12 +1,8 @@
 @import "tailwindcss";
+@plugin "daisyui";
 
 body {
   min-height: 100dvh;
   place-content: center;
   font-family: Arial, Helvetica, sans-serif;
-}
-
-p {
-  margin-block: 1em; /* In case the browser does not support 1lh */
-  margin-block: 1lh;
 }

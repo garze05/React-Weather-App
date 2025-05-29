@@ -1,8 +1,10 @@
 import Weather from "./Weather";
 import { useState, useEffect } from "react";
+import GitHubIcon from "~icons/octicon/mark-github-16";
 
 function App() {
   const [city, setCity] = useState("");
+  const githubLink = "https://github.com/garze05";
 
   useEffect(() => {
     if (city) console.log("City:", city);
@@ -20,14 +22,24 @@ function App() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-700 to-indigo-900 p-4">
       <div className="max-w-md mx-auto pt-8">
-        <div className="text-center mb-8">
+        <div className="text-center my-10">
           <h1 className="text-4xl font-bold text-white mb-2 drop-shadow-lg">
             Weather App ☁️
           </h1>
-          <p className="text-blue-200 opacity-80">by @garze05</p>
+          <a
+            href={githubLink}
+            className="inline-block hover:text-blue-100 transition-colors"
+          >
+            <div className="flex items-center justify-center gap-2">
+              <p className="text-blue-200 opacity-80 hover:opacity-100">
+                by @garze05
+              </p>
+              <GitHubIcon className="h-6 w-6 text-white/80" />
+            </div>
+          </a>
         </div>
 
-        <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-6 shadow-xl border border-white/20">
+        <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-6 shadow-xl border border-white/20 hover:bg-white/15 transition-all">
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label
@@ -47,7 +59,7 @@ function App() {
                 />
                 <button
                   type="submit"
-                  className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors shadow-lg hover:shadow-xl"
+                  className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors shadow-lg hover:shadow-xl focus:ring-2 focus:ring-blue-300 focus:ring-offset-2 focus:ring-offset-blue-90 cursor-pointer"
                 >
                   Search
                 </button>
