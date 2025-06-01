@@ -48,7 +48,7 @@ function App() {
               >
                 Search for a city
               </label>
-              <div className="flex gap-2">
+              <div className="flex flex-col sm:flex-row gap-2">
                 <input
                   id="city"
                   name="city"
@@ -59,7 +59,7 @@ function App() {
                 />
                 <button
                   type="submit"
-                  className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors shadow-lg hover:shadow-xl focus:ring-2 focus:ring-blue-300 focus:ring-offset-2 focus:ring-offset-blue-90 cursor-pointer"
+                  className="w-full sm:w-auto px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors shadow-lg hover:shadow-xl focus:ring-2 focus:ring-blue-300 focus:ring-offset-2 focus:ring-offset-blue-90 cursor-pointer"
                 >
                   Search
                 </button>

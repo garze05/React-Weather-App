@@ -23,8 +23,10 @@ A modern, responsive weather application built with **React**, powered by the **
 - **JavaScript (ES6+)**
 - **Tailwind CSS v4** + **DaisyUI**
 - **Vite**
-- **Luxon** (for accurate timezone/date formatting)
 - **OpenWeather API**
+- **Luxon** (for accurate timezone/date formatting)
+- **FlagsApi** (To get each country's flag)
+- **Iconify** (for the Date, Humidity and Wind Speed icons)
 - **Surge.sh** (Static web publishing)
 
 ---

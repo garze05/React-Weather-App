@@ -25,8 +25,14 @@ function Weather({ city }) {
         );
         const geoData = await geoRes.json();
 
-        if (!geoData.length) {
-          setError("No results found for the specified city.");
+        if (API_KEY) {
+          if (!geoData.length) {
+            setError("No results found for the specified city.");
+            setWeather(null);
+            return;
+          }
+        } else {
+          setError("API key error.");
           setWeather(null);
           return;
         }
@@ -53,18 +59,55 @@ function Weather({ city }) {
 
   if (!city) {
     return (
-      <div className="text-center text-white/70 py-12">
-        <div className="text-6xl mb-4">🔍</div>
-        <p className="text-lg">Search for a city to see the weather</p>
+      <div className="text-center px-5">
+        <div className="text-5xl mb-4">🔍</div>
+        <h4 className="text-xl font-semibold text-white mb-2">
+          Search for a city
+        </h4>
+        <p className="text-white/70">
+          Enter a city name in the search box above to view current weather
+          information.
+        </p>
       </div>
     );
   }
 
   if (loading) {
     return (
-      <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 text-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
-        <p className="text-white">Loading weather data...</p>
+      <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-2xl animate-pulse">
+        {/* Header skeleton */}
+        <div className="flex items-center justify-center gap-3 mb-6">
+          <div className="h-6 w-40 bg-white/20 rounded"></div>
+          <div className="h-8 w-8 bg-white/20 rounded"></div>
+        </div>
+
+        {/* Main weather info skeleton */}
+        <div className="flex items-center justify-center gap-6 mb-6">
+          <div className="h-20 w-20 rounded-full bg-white/20"></div>
+          <div className="text-center">
+            <div className="h-10 w-24 bg-white/20 rounded mb-2 mx-auto"></div>
+            <div className="h-5 w-32 bg-white/20 rounded mb-1 mx-auto"></div>
+            <div className="h-4 w-40 bg-white/20 rounded mx-auto"></div>
+          </div>
+        </div>
+
+        {/* Weather details skeleton */}
+        <div className="grid grid-cols-3 gap-4">
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="bg-white/10 rounded-xl p-3 text-center">
+              <div className="h-6 w-6 bg-white/20 rounded-full mx-auto mb-1"></div>
+              <div className="h-4 w-12 bg-white/20 rounded mx-auto"></div>
+            </div>
+          ))}
+        </div>
+
+        {/* Additional info skeleton */}
+        <div className="mt-4 pt-4 border-t border-white/20">
+          <div className="flex justify-between">
+            <div className="h-4 w-28 bg-white/20 rounded"></div>
+            <div className="h-4 w-28 bg-white/20 rounded"></div>
+          </div>
+        </div>
       </div>
     );
   }
