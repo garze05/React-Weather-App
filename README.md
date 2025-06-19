@@ -1,69 +1,100 @@
-# React Projects Monorepo 🧩
+# Weather App 🌤️
 
-Welcome to my personal **React Projects Monorepo** – a curated collection of beginner to intermediate web applications built to strengthen my skills in modern frontend development.
+A modern, responsive weather application built with **React**, powered by the **OpenWeather API**, and styled using **Tailwind CSS v4** with **DaisyUI** components.
 
-Each folder within this repository is a self-contained project, designed to explore specific concepts in React, JavaScript, API integration, styling, and UI/UX best practices.
-
----
-
-## 📁 Projects Included
-
-| Project Name | Description                               | Live Demo                                                    | Folder Path    |
-| ------------ | ----------------------------------------- | ------------------------------------------------------------ | -------------- |
-| Weather App  | A weather dashboard using OpenWeather API | [weather-gabriel.surge.sh](https://weather-gabriel.surge.sh) | `/weather-app` |
+> This is my first personal React project, built to practice real-world usage of hooks (`useState`, `useEffect`) and API integration.
 
 ---
 
-## 🚀 Purpose of This Monorepo
+## 🚀 Features
 
-- Practice real-world development with small, focused apps
-- Learn and apply best practices for React and modern JS
-- Experiment with tools like Vite, Tailwind, and DaisyUI
-- Build a foundation for future full-stack or AI-driven apps
-- Share and showcase work with live demos and GitHub history
+- **City Search** – Search weather information for any city in the world.
+- **Live Weather Data** – Displays temperature, conditions, icons, and more using the OpenWeather API.
+- **Tooltip-enhanced UI** – Specific weather data (wind, humidity, local date) is displayed with **DaisyUI-powered tooltips** for clarity.
+- **Error Handling** – User-friendly messages when cities aren’t found or APIs fail.
+- **Responsive Design** – Optimized layout for both desktop and mobile devices.
+- **Gradient UI** – Aesthetic and modern using backdrop blurs and color transitions.
+
+---
+
+## 🛠️ Tech Stack
+
+- **React (Hooks)**
+- **JavaScript (ES6+)**
+- **Tailwind CSS v4** + **DaisyUI**
+- **Vite**
+- **OpenWeather API**
+- **Luxon** (for accurate timezone/date formatting)
+- **FlagsApi** (To get each country's flag)
+- **Iconify** (for the Date, Humidity and Wind Speed icons)
+- **Surge.sh** (Static web publishing)
+
+---
+
+## 🔗 Live Demo
+
+[weather-gabriel.surge.sh](https://weather-gabriel.surge.sh)
 
 ---
 
 ## 📦 Getting Started
 
-1. Clone the repository:
+### 1. Clone the monorepo:
 
 ```bash
 git clone https://github.com/garze05/react-projects.git
 ```
 
-2. Navigate to any project folder:
+### 2. Navigate to the project:
 
 ```bash
-cd project-folder-name
+cd weather-app
 ```
 
-3. Install dependencies and run:
+### 3. Install dependencies:
 
 ```bash
 npm install
+```
+
+### 4. Start the development server:
+
+```bash
 npm run dev
 ```
 
-> 🔑 Most projects require an `.env` file with API keys if they use external services.
+### 5. Set your API key
+
+Create a `.env` file in the root of the project:
+
+```
+VITE_API_KEY=your_openweather_api_key
+```
 
 ---
 
-## 📌 Notes
+## 📁 Project Highlights
 
-- All projects are written in **English** to mantain a standard, although my main language is Spanish.
-- Each project contains its own `README.md` with details about features, setup, and deployment.
-- Hosted with **Surge** for simple and fast deployment.
+- Uses **two-step fetching** to first get city coordinates and then retrieve weather data. This is required to find the weather of a specific city by name.
+- Implements **time conversion** using Luxon to reflect accurate _local time_ of the queried city.
+- Tooltips are created using the `data-tip` attribute from **DaisyUI** components.
+- All UI states are handled (no city, loading, error, valid data) with conditional rendering.
 
----
-
-## 👨‍💻 About Me
-
-**Gabriel Rodríguez** – React Developer in training, passionate about creating clean interfaces, learning backend technologies, and integrating AI into practical applications.
-
-- [My LinkedIn](https://www.linkedin.com/in/gabrielrodriguezovares/)
-- [My GitHub](https://github.com/garze05)
+> Note: The reason to use Luxon instead of the native `Date` object in JavaScript is because the OpenWeather API provides timestamps in UTC and a timezone offset in seconds, but JS does not easily support converting these to a city's local time or date.
 
 ---
 
-_Feel free to explore, fork, and learn from any of these projects. More coming soon!_ 🚀
+## ✍️ Author
+
+**Gabriel Rodríguez** – [LinkedIn](https://www.linkedin.com/in/gabrielrodriguezovares/)
+GitHub: [@garze05](https://github.com/garze05)
+
+---
+
+## 📌 Note
+
+This app is part of my monorepo of beginner and intermediate React projects, built to strengthen my frontend development skills and prepare for real-world projects and technical interviews.
+
+---
+
+_Thanks for checking out my work! Feel free to fork or clone this project and make it your own._ 🚀
