@@ -32,7 +32,7 @@ A modern, responsive weather application built with **React**, powered by the **
 
 ## Live Demo
 
-[weather-gabriel.surge.sh](https://weather-gabriel.surge.sh)
+[https://garze05.github.io/React-Weather-App/](https://garze05.github.io/React-Weather-App/)
 
 ---
 
