@@ -39,7 +39,6 @@ npm-debug.log*
 .env
 npm-shrinkwrap.json
 .npmignore
-.package-lock.json
 npm-debug.log.*
 
 .npm-debug/
