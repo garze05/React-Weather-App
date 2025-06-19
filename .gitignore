@@ -26,7 +26,6 @@
 
 # NPM (Node Package Manager)
 node_modules/
-package-lock.json
 .npm/
 .node-gyp/
 
